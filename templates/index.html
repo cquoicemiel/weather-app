@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather in {{ city }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+
+<div class="left-part">
+    <div class="search">
+        <div class="search-container">
+            <input class="search-input" type="search" placeholder="Search weather somewhere"/>
+        </div>
+    </div>
+    <div class="up-part">
+        <img class="weather-icon" src="{{ url_for('static', filename='images/weather.png') }}" alt="Current Weather"/>
+        <div class="informations">
+            <h1 class="temp">{{ temp }}<span class="celsius">°C</span></h1>
+            <h3 class="description">{{ description}}</h3>
+        </div>
+    </div>
+    <div class="down-part">
+        <div class="date-informations">
+            <span class="full-date">{{ date }}</span>
+            <span class="today">{{ time }}</span>
+            <span class="daytime">{{ day_or_night }}</span>
+        </div>
+        <h2 class="city">{{ city }}</h2>
+    </div>
+
+
+</div>
+<div class="right-part">
+    <span class="period-choice">
+        <span class="choice active">Today</span>
+        <span class="choice">Tomorrow</span>
+    </span>
+    <div class="informations-cards">
+        <div class="card">
+            <span class="topic">Feels like</span>
+            <span class="value">{{ temp_feels }}<span class="mesure-unit">°C</span></span>
+        </div>
+        <div class="card">
+            <span class="topic">Humidity</span>
+            <span class="value">{{ humidity }}<span class="mesure-unit">%</span></span>
+        </div>
+
+        <div class="card">
+            <span class="topic">Visibility</span>
+            <span class="value">{{ visibility }} <span class="mesure-unit">km</span></span>
+        </div>
+        <div class="card">
+            <span class="topic">Pressure</span>
+            <span class="value">{{ pressure }} <span class="mesure-unit">hPa</span></span>
+        </div>
+        <div class="card wind-card">
+            <div class="wind-left-part">
+                <span class="topic">Wind</span>
+                <span class="value">{{ wind_speed }} <span class="mesure-unit">m/s</span></span>
+            </div>
+            <div class="wind-direction">
+                <img alt="Wind Direction" id="wind-arrow" class="wind-arrow" src="{{ url_for('static', filename='images/wind-arrow.svg') }}"/>
+                <span class="mesure-unit value">{{ wind_direction }}</span>
+            </div>
+        </div>
+        {#<div class="card">
+            <span class="topic"></span>
+            <span class="value"></span>
+        </div>
+        <div class="card">
+            <span class="topic"></span>
+            <span class="value"></span>
+        </div>
+        <div class="card">
+            <span class="topic"></span>
+            <span class="value"></span>
+        </div>
+        <div class="card">
+            <span class="topic"></span>
+            <span class="value"></span>
+        </div>#}
+
+
+    </div>
+    <span class="credits">
+        All Data Provided by <a class="credit-link" href="https://openweathermap.org/">Open Weather Map</a>
+    </span>
+
+
+</div>
+
+
+<script>
+
+    windArrow = document.getElementById("wind-arrow")
+    windArrow.style.transform = "rotate({{ wind_deg - 90 + 180 }}deg)"
+    // - 90 parce que la fleche est par défaut déjà incliné de 90 deg, et +180 pour qu'elle point la direction du vent et pas qu'elle lui face face
+</script>
+</body>
+</html>
