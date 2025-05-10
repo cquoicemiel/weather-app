@@ -29,8 +29,7 @@ body{
     justify-content: center;
 }
 .search-container{
-    height: 25%;
-    width: 50%;
+    width: 60%;
     background-color: rgb(240, 240, 240);
     border-radius: 22px;
     display: flex;
@@ -42,11 +41,11 @@ body{
     outline: none;
     background-color: transparent;
     padding: 1.2rem;
-    border-radius: 22px 0 0 22px;
+    border-radius: 22px;
     flex: 9;
+    width: 100%;
 
 }
-
 
 .search-icon-container{
     flex: 1;

@@ -10,7 +10,9 @@
 <div class="left-part">
     <div class="search">
         <div class="search-container">
-            <input class="search-input" type="search" placeholder="Search weather somewhere"/>
+            <form class="search-container" method="get" action="/">
+                <input class="search-input" type="search" name="city" placeholder="Search for a city" value="{{ city }}" required>
+            </form>
         </div>
     </div>
     <div class="up-part">
